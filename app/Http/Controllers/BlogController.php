@@ -42,7 +42,10 @@ class BlogController extends Controller
         $blog->subject  = $request->subject;
 
         $blog->save();
-
+        return redirect('blog')->with('message','sudah tersimpan');
+        //  opsi lain pakai mass assignment
+        // $blog = Blog::create(['title' => $request->title, 'subject' => $request->subject]);
+        // Tapi harus bikin protected fillable di model biar ga keisis semua
         
     }
 

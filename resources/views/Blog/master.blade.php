@@ -15,6 +15,7 @@
   <div class="container">
     @yield('create')
     @yield('index')
+    @yield('single')
   </div>  
 
 

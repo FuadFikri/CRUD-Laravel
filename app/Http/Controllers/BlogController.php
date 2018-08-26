@@ -49,23 +49,17 @@ class BlogController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $blog = Blog::find($id);
+        if(!$blog){
+            abort(404);
+        }
+        return view('Blog.single')->with('blog', $blog);
+
+ 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //

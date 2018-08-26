@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $blog->title }}</h5>
                 <p class="card-text">{{ $blog->subject }}</p>
-                {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+            <a href="{{url('/blog/'.$blog->id)}}" class="btn btn-primary">Detail</a>
             </div>
             </div>
             <div style="margin:10px;"></div>

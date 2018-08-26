@@ -36,6 +36,14 @@ class BlogController extends Controller
             'title'     => 'required|unique:blog|min:5',
             'subject'   => 'required',
         ]);
+
+        $blog = New Blog;
+        $blog->title    = $request->title;
+        $blog->subject  = $request->subject;
+
+        $blog->save();
+
+        
     }
 
     /**

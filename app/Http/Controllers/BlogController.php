@@ -62,7 +62,8 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        //
+        $blog = Blog::find($id);
+        return view('Blog.edit ')->with('blog', $blog);
     }
 
     /**
@@ -74,7 +75,17 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title'     => 'required|min:5',
+            'subject'   => 'required',
+        ]);
+
+        $blog = Blog::find($id);
+        $blog->title    = $request->title;
+        $blog->subject  = $request->subject;
+
+        $blog->save();
+        return redirect('blog')->with('message','sudah diupdate');
     }
 
     /**

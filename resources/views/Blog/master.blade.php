@@ -16,6 +16,7 @@
     @yield('create')
     @yield('index')
     @yield('single')
+    @yield('edit')
   </div>  
 
 

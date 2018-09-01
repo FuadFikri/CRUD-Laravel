@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Model\Blog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        // $blogs = Blog::all();
+        $blogs  = DB::table('blog')->paginate(2);
         return view('Blog.index', ['blogs'=>$blogs]);
     }
 
@@ -40,6 +42,7 @@ class BlogController extends Controller
         $blog = New Blog;
         $blog->title    = $request->title;
         $blog->subject  = $request->subject;
+        $blog->slug     = str_slug($request->title, '-');
 
         $blog->save();
         return redirect('blog')->with('message','sudah tersimpan');
@@ -49,9 +52,10 @@ class BlogController extends Controller
         
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $blog = Blog::find($id);
+        // $blog = Blog::find($id);
+        $blog = Blog::where('slug',$slug)->first();
         if(!$blog){
             abort(404);
         }
@@ -83,6 +87,7 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         $blog->title    = $request->title;
         $blog->subject  = $request->subject;
+        $blog->slug     = str_slug($request->title, '-');
 
         $blog->save();
         return redirect('blog')->with('message','sudah diupdate');

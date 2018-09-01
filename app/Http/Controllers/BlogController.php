@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+
 use App\Model\Blog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,8 +17,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        // $blogs = Blog::all();
-        $blogs  = DB::table('blog')->paginate(2);
+        $blogs = Blog::paginate(3);
+        // $blogs  = DB::table('blog')->paginate(3); harus use DB
         return view('Blog.index', ['blogs'=>$blogs]);
     }
 

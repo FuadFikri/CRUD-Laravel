@@ -11,10 +11,13 @@ class BlogTableSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('laravel_crud')->insert([
-        //     'title' => str_random(6),
-        //     'subject' => str_random(10),
-        //     // 'password' => bcrypt('secret'),
-        // ]);
+        $faker = Faker\Factory::create();
+        foreach (range(1, 10) as $loop) {
+            DB::table('blog')->insert([
+                'title' => $faker->sentence($nbWords = 3, $variableNbWords = true),
+                'subject' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+                'slug' => str_slug($faker->sentence($nbWords = 3, $variableNbWords = true), '-'),
+            ]);
+            }
     }
 }

@@ -17,7 +17,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(3);
+        
+        $blogs = Blog::distinct('id',0)
+              ->orderBy('created_at','desc')
+              ->paginate(3);
+              
         // $blogs  = DB::table('blog')->paginate(3); harus use DB
         return view('Blog.index', ['blogs'=>$blogs]);
     }

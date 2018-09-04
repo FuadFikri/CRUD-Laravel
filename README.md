@@ -1,2 +1,5 @@
 # CRUD-Laravel
-CRUD memakai laravel
+- Eloquent
+- Pagination
+- Validation
+- Faker

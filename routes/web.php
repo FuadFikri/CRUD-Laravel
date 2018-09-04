@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +17,5 @@
 Route::group(['middleware' => ['web']], function(){
     Route::resource('blog', 'BlogController');
 });
-
 
 
